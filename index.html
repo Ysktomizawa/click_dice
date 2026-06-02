@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<!-- PyScriptを読み込む -->
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="module" src="https://pyscript.net/releases/2025.8.1/core.js" ></script>
+<!-- HTMLのタイトルを設定 -->
+ <body>
+    <div><button mpy-click="show_dice">サイコロを振る</button></div>
+    <div id="disp" style="font-size:8em;">-</div>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* 縦方向中央 */
+            align-items: center;     /* 横方向中央 */
+        }
+    </style>
+ </body>
+<!--Pythonのプログラム -->
+<script type="mpy">
+    import random
+    from pyscript import document
+
+    # -- クリックされたときに呼び出される関数
+    def show_dice(event):
+        # -- 1から6までの乱数を生成
+        r = random.randint(1, 6)
+        # -- idがdispの要素を取得して、サイコロの目を表示
+        disp = document.getElementById("disp")
+        # -- dispの内容をサイコロの目に置き換える
+        disp.innerText = str(r)
+</script>
